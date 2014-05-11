@@ -59,7 +59,6 @@ public class DebugActivity extends Activity
 			break;
 		case R.id.action3: // Read button text from external file
 			_output.setText(_output.getText()+"\nAction 3");
-			LimaDb()
 			break;
 		}
 	}
