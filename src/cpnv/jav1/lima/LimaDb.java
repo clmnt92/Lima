@@ -13,8 +13,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 /**
- * LimaDb is a class that allows querying a remote database using a web service.
- * The query is sent by HTTP POST to the service, which sends data back in XML.
+ * Allows querying a remote database using a web service.
+ * The SQL query is sent by HTTP POST to the service, which sends data back in XML.
  * The data returned is parsed in LimaDb and made available to the user through
  * public methods
  * 
@@ -41,10 +41,8 @@ public class LimaDb {
 	// ================================== Constructors ==========================================
 
 	/**
-	 * Constructor
-	 * 
 	 * @param wsURL
-	 * 			The URL of the web service, i.e: to which the query will be POSTed
+	 * The URL of the web service, i.e: to which the query will be POSTed
 	 */
 	public LimaDb (String wsURL)
 	{
@@ -54,10 +52,10 @@ public class LimaDb {
 	// ================================== Public methods ==========================================
 
 	/**
-	 * Check if the Lima database is available
+	 * Checks if the Lima database is available
 	 * 
 	 * @return
-	 * 		true if the connection to the web service and the the database is good
+	 * true if the connection to the web service and the the database is good
 	 */
 	public boolean connectionIsOK () 
 	{
@@ -73,14 +71,14 @@ public class LimaDb {
 	}
 	
 	/**
-	 * Executes the query and returns the number of affected or selected records
-	 * A negative value indicates that an error occurred
-	 * In the case of a SELECT, the first record has *NOT* been read at this point
+	 * Executes the query and returns the number of affected or selected records<br>
+	 * A negative value indicates that an error occurred<br>
+	 * In the case of a SELECT, the first record has <b>NOT</b> been read at this point
 	 * 
 	 * @param query
-	 * 			The SQL query to execute on the remote server
+	 * The SQL query to execute on the remote server
 	 * @return
-	 * 			the number of affected or selected records
+	 * The number of affected or selected records
 	 */
 	public int executeQuery (String query)
 	{
@@ -116,7 +114,7 @@ public class LimaDb {
 	 * Reads the next record from the current recordset
 	 * 
 	 * @return
-	 * 			true if a record was successfully read, false if there was no more records or the XML returned was bad
+	 * true if a record was successfully read, false if there was no more records or the XML returned was bad
 	 */
 	public boolean moveNext()
 	{
@@ -165,10 +163,11 @@ public class LimaDb {
 	 * Reads the value of a field in the current record
 	 * 
 	 * @param fname
-	 * 			the name of the field to read
+	 * the name of the field to read
+	 * 
 	 * @return
-	 * 			the value of the field "fname" of the current record, or the constant LIMA_ERROR_FIELD_DOES_NOT_EXIST 
-	 * 			if the field does not exist in the record
+	 * The value of the field "fname" of the current record, or the constant LIMA_ERROR_FIELD_DOES_NOT_EXIST 
+	 * if the field does not exist in the record
 	 */
 	public String getField(String fname)
 	{
