@@ -43,6 +43,11 @@ public class Book extends Article
   /* SQL fields */
 
     /**
+     * The name of the SQL table 
+     */
+    public static final String sqlTable = "bookdetail";
+    
+    /**
      * The name of the SQL field for the ID
      */
     public static final String sqlID = "idbookdetail";
@@ -88,6 +93,31 @@ public class Book extends Article
         return _isbn;
     }
 
+/* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
+  /* ORM */
+    
+    /**
+     * Gets the database access object
+     * 
+     * @return The database access object
+     */
+    private LimaDb getDao()
+    {
+    	return new LimaDb("http://192.168.0.4");
+    }
+    
+    /**
+     * Save the current object on the database
+     */
+    public void save()
+    {
+    	LimaDb dao = getDao();
+    	
+    	if (null == _id) {
+    		
+    	}
+    }
+    
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
   /* Getters & Setters */
 
