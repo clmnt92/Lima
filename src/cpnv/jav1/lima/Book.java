@@ -17,8 +17,7 @@ public class Book extends Article{
 		super((Article) book);
 		setISBN(book._isbn);
 	}
-	public Book(String name, int number, String resp, String supplier,
-			Double price, Double vAT, int isbn) {
+	public Book(String name, int number, String resp, String supplier, Double price, Double vAT, int isbn) {
 		super(name, number, resp, supplier, price, vAT);
 		setISBN(isbn);
 	}
@@ -39,7 +38,9 @@ public class Book extends Article{
 	
 	public String dump(){
 		//"XML For Dummies-3300-Bernard-Payot-33.3-8.0-987654321"
-		return _name+"-"+_number+"-"+_resp+"-"+_supplier+"-"+_price+"-"+_VAT+"-"+_isbn;
+		//return _name+"-"+_number+"-"+_resp+"-"+_supplier+"-"+_price+"-"+_VAT+"-"+_isbn;
+		return super._name+"-"+super._number+"-"+super._resp+"-"+super._supplier+"-"+super._price+"-"+super._VAT+"-"+_isbn;
+		//return _name;
 	}
 	
 }

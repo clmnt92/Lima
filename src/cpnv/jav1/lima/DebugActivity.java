@@ -35,6 +35,8 @@ public class DebugActivity extends Activity
        	_btn.setOnClickListener(this); 
         _btn = (Button)findViewById(R.id.action3); 
        	_btn.setOnClickListener(this); 
+       	_btn = (Button)findViewById(R.id.action4); 
+       	_btn.setOnClickListener(this);
        	
        	// Get reference on the output textview
 		_output = (TextView)findViewById(R.id.outputzone);
@@ -189,89 +191,102 @@ public class DebugActivity extends Activity
 			
 			
 			// Write out result
+			
+			_output.setText(_output.getText()+"\n"+book02.dump()+"\n");
 			_output.setText(_output.getText()+"\nScore = "+nbpts+"/18");
 			
 			break;
 		case R.id.action3: // 
 			_output.setText("Test Gear");
 			
-			/* Uncomment the code below when your classes are ready
+			/* Uncomment the code below when your classes are ready*/
 
 			Gear gear01 = new Gear();
-			Gear gear02 = new Gear("Blouse",5800,"HervŽ","H&M",72.10,8.0,"XXL"); // Number, responsible, supplier, price, VAT, size
-			Gear gear03 = new Gear("XL",5800,"HervŽ","H&M",72.10,8.0,"XXL");
-			Gear gear04 = new Gear("Blouse",-5800,"HervŽ","H&M",72.10,8.0,"XXL");
+			Gear gear02 = new Gear("Blouse",5800,"Hervé","H&M",72.10,8.0,"XXL"); // Number, responsible, supplier, price, VAT, size
+			Gear gear03 = new Gear("XL",5800,"Hervé","H&M",72.10,8.0,"XXL");
+			Gear gear04 = new Gear("Blouse",-5800,"Hervé","H&M",72.10,8.0,"XXL");
 			Gear gear05 = new Gear("Blouse",5800,"X","H&M",72.10,8.0,"XXL");
-			Gear gear06 = new Gear("Blouse",5800,"HervŽ","X",72.10,8.0,"XXL");
-			Gear gear07 = new Gear("Blouse",5800,"HervŽ","H&M",-72.10,8.0,"XXL");
-			Gear gear08 = new Gear("Blouse",5800,"HervŽ","H&M",72.10,-8.0,"XXL");
-			Gear gear09 = new Gear("Blouse",5800,"HervŽ","H&M",72.10,8.0,"XXLXV");
+			Gear gear06 = new Gear("Blouse",5800,"Hervé","X",72.10,8.0,"XXL");
+			Gear gear07 = new Gear("Blouse",5800,"Hervé","H&M",-72.10,8.0,"XXL");
+			Gear gear08 = new Gear("Blouse",5800,"Hervé","H&M",72.10,-8.0,"XXL");
+			Gear gear09 = new Gear("Blouse",5800,"Hervé","H&M",72.10,8.0,"XXLXV");
 			Gear gear10 = new Gear(gear02);
 			
 			// Check behavior
 
 			if ((gear01.getNumber() == 0) && (gear01.getResp().equals("(à définir)")) && (gear01.getSupplier().equals("(à définir)")) && (gear01.getPrice() == 0.0) && (gear01.getVAT() == 0.0) && (gear01.getSize().equals("U"))) nbpts++;
-			if ((gear02.getName().equals("Blouse")) && (gear02.getNumber() == 5800) && (gear02.getResp().equals("HervŽ")) && (gear02.getSupplier().equals("H&M")) && (gear02.getPrice() == 72.10) && (gear02.getVAT() == 8.0) && (gear02.getSize() == "XXL")) nbpts++;
-			if ((gear03.getName().equals("(à définir)")) && (gear03.getNumber() == 5800) && (gear03.getResp().equals("HervŽ")) && (gear03.getSupplier().equals("H&M")) && (gear03.getPrice() == 72.10) && (gear03.getVAT() == 8.0) && (gear03.getSize() == "XXL")) nbpts++;
-			if ((gear04.getName().equals("Blouse")) && (gear04.getNumber() == 0) && (gear04.getResp().equals("HervŽ")) && (gear04.getSupplier().equals("H&M")) && (gear04.getPrice() == 72.10) && (gear04.getVAT() == 8.0) && (gear04.getSize() == "XXL")) nbpts++;
+			if ((gear02.getName().equals("Blouse")) && (gear02.getNumber() == 5800) && (gear02.getResp().equals("Hervé")) && (gear02.getSupplier().equals("H&M")) && (gear02.getPrice() == 72.10) && (gear02.getVAT() == 8.0) && (gear02.getSize() == "XXL")) nbpts++;
+			if ((gear03.getName().equals("(à définir)")) && (gear03.getNumber() == 5800) && (gear03.getResp().equals("Hervé")) && (gear03.getSupplier().equals("H&M")) && (gear03.getPrice() == 72.10) && (gear03.getVAT() == 8.0) && (gear03.getSize() == "XXL")) nbpts++;
+			if ((gear04.getName().equals("Blouse")) && (gear04.getNumber() == 0) && (gear04.getResp().equals("Hervé")) && (gear04.getSupplier().equals("H&M")) && (gear04.getPrice() == 72.10) && (gear04.getVAT() == 8.0) && (gear04.getSize() == "XXL")) nbpts++;
 			if ((gear05.getName().equals("Blouse")) && (gear05.getNumber() == 5800) && (gear05.getResp().equals("(à définir)")) && (gear05.getSupplier().equals("H&M")) && (gear05.getPrice() == 72.10) && (gear05.getVAT() == 8.0) && (gear05.getSize() == "XXL")) nbpts++;
-			if ((gear06.getName().equals("Blouse")) && (gear06.getNumber() == 5800) && (gear06.getResp().equals("HervŽ")) && (gear06.getSupplier().equals("(à définir)")) && (gear06.getPrice() == 72.10) && (gear06.getVAT() == 8.0) && (gear06.getSize() == "XXL")) nbpts++;
-			if ((gear07.getName().equals("Blouse")) && (gear07.getNumber() == 5800) && (gear07.getResp().equals("HervŽ")) && (gear07.getSupplier().equals("H&M")) && (gear07.getPrice() == 0.0) && (gear07.getVAT() == 8.0) && (gear07.getSize() == "XXL")) nbpts++;
-			if ((gear08.getName().equals("Blouse")) && (gear08.getNumber() == 5800) && (gear08.getResp().equals("HervŽ")) && (gear08.getSupplier().equals("H&M")) && (gear08.getPrice() == 72.10) && (gear08.getVAT() == 0.0) && (gear08.getSize() == "XXL")) nbpts++;
-			if ((gear09.getName().equals("Blouse")) && (gear09.getNumber() == 5800) && (gear09.getResp().equals("HervŽ")) && (gear09.getSupplier().equals("H&M")) && (gear09.getPrice() == 72.10) && (gear09.getVAT() == 8.0) && (gear09.getSize().equals("U"))) nbpts++;
-			if ((gear10.getName().equals("Blouse")) && (gear10.getNumber() == 5801) && (gear10.getResp().equals("HervŽ")) && (gear10.getSupplier().equals("H&M")) && (gear10.getPrice() == 72.10) && (gear10.getVAT() == 8.0) && (gear10.getSize() == "XXL")) nbpts++;
+			if ((gear06.getName().equals("Blouse")) && (gear06.getNumber() == 5800) && (gear06.getResp().equals("Hervé")) && (gear06.getSupplier().equals("(à définir)")) && (gear06.getPrice() == 72.10) && (gear06.getVAT() == 8.0) && (gear06.getSize() == "XXL")) nbpts++;
+			if ((gear07.getName().equals("Blouse")) && (gear07.getNumber() == 5800) && (gear07.getResp().equals("Hervé")) && (gear07.getSupplier().equals("H&M")) && (gear07.getPrice() == 0.0) && (gear07.getVAT() == 8.0) && (gear07.getSize() == "XXL")) nbpts++;
+			if ((gear08.getName().equals("Blouse")) && (gear08.getNumber() == 5800) && (gear08.getResp().equals("Hervé")) && (gear08.getSupplier().equals("H&M")) && (gear08.getPrice() == 72.10) && (gear08.getVAT() == 0.0) && (gear08.getSize() == "XXL")) nbpts++;
+			if ((gear09.getName().equals("Blouse")) && (gear09.getNumber() == 5800) && (gear09.getResp().equals("Hervé")) && (gear09.getSupplier().equals("H&M")) && (gear09.getPrice() == 72.10) && (gear09.getVAT() == 8.0) && (gear09.getSize().equals("U"))) nbpts++;
+			if ((gear10.getName().equals("Blouse")) && (gear10.getNumber() == 5801) && (gear10.getResp().equals("Hervé")) && (gear10.getSupplier().equals("H&M")) && (gear10.getPrice() == 72.10) && (gear10.getVAT() == 8.0) && (gear10.getSize() == "XXL")) nbpts++;
 			gear03.setName("Blouse");
-			if ((gear03.getName().equals("Blouse")) && (gear03.getNumber() == 5800) && (gear03.getResp().equals("HervŽ")) && (gear03.getSupplier().equals("H&M")) && (gear03.getPrice() == 72.10) && (gear03.getVAT() == 8.0) && (gear03.getSize() == "XXL")) 
+			if ((gear03.getName().equals("Blouse")) && (gear03.getNumber() == 5800) && (gear03.getResp().equals("Hervé")) && (gear03.getSupplier().equals("H&M")) && (gear03.getPrice() == 72.10) && (gear03.getVAT() == 8.0) && (gear03.getSize() == "XXL")) 
 			{
 				gear03.setName("XM");
-				if ((gear03.getName().equals("(à définir)")) && (gear03.getNumber() == 5800) && (gear03.getResp().equals("HervŽ")) && (gear03.getSupplier().equals("H&M")) && (gear03.getPrice() == 72.10) && (gear03.getVAT() == 8.0) && (gear03.getSize() == "XXL")) nbpts++;
+				if ((gear03.getName().equals("(à définir)")) && (gear03.getNumber() == 5800) && (gear03.getResp().equals("Hervé")) && (gear03.getSupplier().equals("H&M")) && (gear03.getPrice() == 72.10) && (gear03.getVAT() == 8.0) && (gear03.getSize() == "XXL")) nbpts++;
 			}
 			gear04.setNumber(5800);
-			if ((gear04.getName().equals("Blouse")) && (gear04.getNumber() == 5800) && (gear04.getResp().equals("HervŽ")) && (gear04.getSupplier().equals("H&M")) && (gear04.getPrice() == 72.10) && (gear04.getVAT() == 8.0) && (gear04.getSize() == "XXL")) 
+			if ((gear04.getName().equals("Blouse")) && (gear04.getNumber() == 5800) && (gear04.getResp().equals("Hervé")) && (gear04.getSupplier().equals("H&M")) && (gear04.getPrice() == 72.10) && (gear04.getVAT() == 8.0) && (gear04.getSize() == "XXL")) 
 			{
 				gear04.setNumber(-5800);
-				if ((gear04.getName().equals("Blouse")) && (gear04.getNumber() == 0) && (gear04.getResp().equals("HervŽ")) && (gear04.getSupplier().equals("H&M")) && (gear04.getPrice() == 72.10) && (gear04.getVAT() == 8.0) && (gear04.getSize() == "XXL")) nbpts++;
+				if ((gear04.getName().equals("Blouse")) && (gear04.getNumber() == 0) && (gear04.getResp().equals("Hervé")) && (gear04.getSupplier().equals("H&M")) && (gear04.getPrice() == 72.10) && (gear04.getVAT() == 8.0) && (gear04.getSize() == "XXL")) nbpts++;
 			}
-			gear05.setResp("HervŽ");
-			if ((gear05.getName().equals("Blouse")) && (gear05.getNumber() == 5800) && (gear05.getResp().equals("HervŽ")) && (gear05.getSupplier().equals("H&M")) && (gear05.getPrice() == 72.10) && (gear05.getVAT() == 8.0) && (gear05.getSize() == "XXL")) 
+			gear05.setResp("Hervé");
+			if ((gear05.getName().equals("Blouse")) && (gear05.getNumber() == 5800) && (gear05.getResp().equals("Hervé")) && (gear05.getSupplier().equals("H&M")) && (gear05.getPrice() == 72.10) && (gear05.getVAT() == 8.0) && (gear05.getSize() == "XXL")) 
 			{
 				gear05.setResp("X");
 				if ((gear05.getName().equals("Blouse")) && (gear05.getNumber() == 5800) && (gear05.getResp().equals("(à définir)")) && (gear05.getSupplier().equals("H&M")) && (gear05.getPrice() == 72.10) && (gear05.getVAT() == 8.0) && (gear05.getSize() == "XXL")) nbpts++;
 			}
 			gear06.setSupplier("H&M");
-			if ((gear06.getName().equals("Blouse")) && (gear06.getNumber() == 5800) && (gear06.getResp().equals("HervŽ")) && (gear06.getSupplier().equals("H&M")) && (gear06.getPrice() == 72.10) && (gear06.getVAT() == 8.0) && (gear06.getSize() == "XXL")) 
+			if ((gear06.getName().equals("Blouse")) && (gear06.getNumber() == 5800) && (gear06.getResp().equals("Hervé")) && (gear06.getSupplier().equals("H&M")) && (gear06.getPrice() == 72.10) && (gear06.getVAT() == 8.0) && (gear06.getSize() == "XXL")) 
 			{
 				gear06.setSupplier("X");
-				if ((gear06.getName().equals("Blouse")) && (gear06.getNumber() == 5800) && (gear06.getResp().equals("HervŽ")) && (gear06.getSupplier().equals("(à définir)")) && (gear06.getPrice() == 72.10) && (gear06.getVAT() == 8.0) && (gear06.getSize() == "XXL")) nbpts++;
+				if ((gear06.getName().equals("Blouse")) && (gear06.getNumber() == 5800) && (gear06.getResp().equals("Hervé")) && (gear06.getSupplier().equals("(à définir)")) && (gear06.getPrice() == 72.10) && (gear06.getVAT() == 8.0) && (gear06.getSize() == "XXL")) nbpts++;
 			}
 			gear07.setPrice(72.10);
-			if ((gear07.getName().equals("Blouse")) && (gear07.getNumber() == 5800) && (gear07.getResp().equals("HervŽ")) && (gear07.getSupplier().equals("H&M")) && (gear07.getPrice() == 72.10) && (gear07.getVAT() == 8.0) && (gear07.getSize() == "XXL")) 
+			if ((gear07.getName().equals("Blouse")) && (gear07.getNumber() == 5800) && (gear07.getResp().equals("Hervé")) && (gear07.getSupplier().equals("H&M")) && (gear07.getPrice() == 72.10) && (gear07.getVAT() == 8.0) && (gear07.getSize() == "XXL")) 
 			{
 				gear07.setPrice(-72.10);
-				if ((gear07.getName().equals("Blouse")) && (gear07.getNumber() == 5800) && (gear07.getResp().equals("HervŽ")) && (gear07.getSupplier().equals("H&M")) && (gear07.getPrice() == 0.0) && (gear07.getVAT() == 8.0) && (gear07.getSize() == "XXL")) nbpts++;
+				if ((gear07.getName().equals("Blouse")) && (gear07.getNumber() == 5800) && (gear07.getResp().equals("Hervé")) && (gear07.getSupplier().equals("H&M")) && (gear07.getPrice() == 0.0) && (gear07.getVAT() == 8.0) && (gear07.getSize() == "XXL")) nbpts++;
 			}
 			gear08.setVAT(8.0);
-			if ((gear08.getName().equals("Blouse")) && (gear08.getNumber() == 5800) && (gear08.getResp().equals("HervŽ")) && (gear08.getSupplier().equals("H&M")) && (gear08.getPrice() == 72.10) && (gear08.getVAT() == 8.0) && (gear08.getSize() == "XXL")) 
+			if ((gear08.getName().equals("Blouse")) && (gear08.getNumber() == 5800) && (gear08.getResp().equals("Hervé")) && (gear08.getSupplier().equals("H&M")) && (gear08.getPrice() == 72.10) && (gear08.getVAT() == 8.0) && (gear08.getSize() == "XXL")) 
 			{
 				gear08.setVAT(-8.0);
-				if ((gear08.getName().equals("Blouse")) && (gear08.getNumber() == 5800) && (gear08.getResp().equals("HervŽ")) && (gear08.getSupplier().equals("H&M")) && (gear08.getPrice() == 72.10) && (gear08.getVAT() == 0.0) && (gear08.getSize() == "XXL")) nbpts++;
+				if ((gear08.getName().equals("Blouse")) && (gear08.getNumber() == 5800) && (gear08.getResp().equals("Hervé")) && (gear08.getSupplier().equals("H&M")) && (gear08.getPrice() == 72.10) && (gear08.getVAT() == 0.0) && (gear08.getSize() == "XXL")) nbpts++;
 			}
 			gear09.setSize("XXL");
-			if ((gear09.getName().equals("Blouse")) && (gear09.getNumber() == 5800) && (gear09.getResp().equals("HervŽ")) && (gear09.getSupplier().equals("H&M")) && (gear09.getPrice() == 72.10) && (gear09.getVAT() == 8.0) && (gear09.getSize() == "XXL")) 
+			if ((gear09.getName().equals("Blouse")) && (gear09.getNumber() == 5800) && (gear09.getResp().equals("Hervé")) && (gear09.getSupplier().equals("H&M")) && (gear09.getPrice() == 72.10) && (gear09.getVAT() == 8.0) && (gear09.getSize() == "XXL")) 
 			{
 				gear09.setSize("XXXXXX");
-				if ((gear09.getName().equals("Blouse")) && (gear09.getNumber() == 5800) && (gear09.getResp().equals("HervŽ")) && (gear09.getSupplier().equals("H&M")) && (gear09.getPrice() == 72.10) && (gear09.getVAT() == 8.0) && (gear09.getSize().equals("U"))) 
+				if ((gear09.getName().equals("Blouse")) && (gear09.getNumber() == 5800) && (gear09.getResp().equals("Hervé")) && (gear09.getSupplier().equals("H&M")) && (gear09.getPrice() == 72.10) && (gear09.getVAT() == 8.0) && (gear09.getSize().equals("U"))) 
 				{
 					gear09.setSize("");
-					if ((gear09.getName().equals("Blouse")) && (gear09.getNumber() == 5800) && (gear09.getResp().equals("HervŽ")) && (gear09.getSupplier().equals("H&M")) && (gear09.getPrice() == 72.10) && (gear09.getVAT() == 8.0) && (gear09.getSize().equals("U"))) nbpts++;
+					if ((gear09.getName().equals("Blouse")) && (gear09.getNumber() == 5800) && (gear09.getResp().equals("Hervé")) && (gear09.getSupplier().equals("H&M")) && (gear09.getPrice() == 72.10) && (gear09.getVAT() == 8.0) && (gear09.getSize().equals("U"))) nbpts++;
 				}
 			}
-			if (gear02.dump().equals("Blouse-5800-HervŽ-H&M-72.1-8.0-XXL")) nbpts++;
-			*/
+			if (gear02.dump().equals("Blouse-5800-Hervé-H&M-72.1-8.0-XXL")) nbpts++;
+			
 			// Write out result
 			_output.setText(_output.getText()+"\nScore = "+nbpts+"/18");
 			
 			break;
+			
+			case R.id.action4: // 
+			_output.setText("Test Teacher");
+			
+			Teacher teacher01 = new Teacher();
+			//Teacher teacher02 = new Teacher("elie","turc",);
+			
+			_output.setText(teacher01.dump());
+			
+			break;
+			
 		}
 	}
 		
