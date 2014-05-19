@@ -51,15 +51,33 @@ public class DebugActivityMD extends Activity
 		// Let's see which action must be performed
 		switch (btn.getId()) 
 		{
-		case R.id.action1: // Add timestamp to the debug text
-			_output.setText(_output.getText()+"\nAction 1");
-			break;
-		case R.id.action2: // get data from web service using POST
-			_output.setText(_output.getText()+"\nAction 2");
-			break;
-		case R.id.action3: // Read button text from external file
-			_output.setText(_output.getText()+"\nAction 3");
-			break;
+			case R.id.action1: // Add timestamp to the debug text
+				
+				/* Test connexion SQL */
+				_output.setText(_output.getText()+"\nTest connexion SQL...");
+				
+				try
+				{
+					LimaDb connexion = new LimaDb("http://192.168.0.4");
+				}
+				catch(Exception e)
+				{
+					_output.setText(_output.getText()+"\nbugL");
+				}
+				_output.setText(_output.getText()+"\n...connexion ok !");
+				
+				/* test catch the current year */ 
+				ItemsCurrentYear itemsCurrentYear=new ItemsCurrentYear();
+				//_output.setText(_output.getText()+itemsCurrentYear._startYear.toString());
+				
+				break;
+			
+		//case R.id.action2: // get data from web service using POST
+			//_output.setText(_output.getText()+"\nAction 2");
+			//break;
+		//case R.id.action3: // Read button text from external file
+			//_output.setText(_output.getText()+"\nAction 3");
+			//break;
 		}
 	}
 		

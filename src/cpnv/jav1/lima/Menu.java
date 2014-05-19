@@ -44,7 +44,7 @@ public class Menu extends Activity
 		switch (btn.getId()) 
 		{
 		case R.id.cmdMainDebug: // Debug button -> switch to debug activity
-			Intent myIntent = new Intent(Menu.this, DebugActivity.class);
+			Intent myIntent = new Intent(Menu.this, DebugActivityMD.class);
 			// Let's pass some parameters to the debug activity
 			myIntent.putExtra("arg0", "arg0 is a string value, unlike arg1, which is an integer");
 			myIntent.putExtra("arg1", 5);
@@ -56,6 +56,10 @@ public class Menu extends Activity
 		case R.id.cmdMainInventory: // Inventory button -> switch to Inventory activity
 			break;
 		case R.id.cmdMainDistribution: // Distribution button -> switch to Distribution activity
+			Intent distribution = new Intent(Menu.this, cpnv.jav1.lima.DistributionSessionsActivity.class);
+			distribution.putExtra("arg0", "arg0 is a string value, unlike arg1, which is an integer");
+			distribution.putExtra("arg1", 5);
+			Menu.this.startActivity(distribution);
 			break;
 		}
 	}
