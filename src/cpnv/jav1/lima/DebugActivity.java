@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class DebugActivity extends Activity 
 				   implements OnClickListener {
 
-	// References on controls of this activity
+	// References on the controls of this activity
 	private Button _btn;
 	private TextView _output;
 	
