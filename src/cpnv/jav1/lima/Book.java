@@ -108,7 +108,15 @@ public class Book
      */
     public String dump()
     {
-        return _isbn;
+    	String dump = "Object(Book)#" + hashCode() + " {";
+    	dump += "\n\t ID = " + _id;
+    	dump += "\n\t Author = " + _author;
+    	dump += "\n\t Editor = " + _editor;
+    	dump += "\n\t ISBN = " + _isbn;
+    	dump += "\n\t PublicationYear = " + _publicationYear;
+    	dump += "\n}";
+    	
+        return dump;
     }
 
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
