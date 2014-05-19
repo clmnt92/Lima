@@ -11,13 +11,18 @@ public abstract class Log {
 	int _fk_person;
 	Date _timestamp;
 	String _message;
+	int _type;
 	
 	/**
 	 *
 	 * @param
 	 */
-	protected void log(int _fk_person, String _message, int type){
+	protected Log(int fk_person, String message, int type){
+		//To do, add ID and add timestamp
 		
+		set_fk_person(fk_person);
+		set_message(message);
+		set_type(type);
 	}
 	
 	/**
@@ -84,5 +89,19 @@ public abstract class Log {
 		this._message = _message;
 	}
 	
-	
+	/**
+	 *
+	 * @return _type
+	 */
+	public int get_type() {
+		return _type;
+	}
+
+	/**
+	 *
+	 * @param _message
+	 */
+	public void set_type(int type) {
+		this._type = type;
+	}
 }
