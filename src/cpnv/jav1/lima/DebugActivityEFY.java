@@ -1,8 +1,5 @@
 package cpnv.jav1.lima;
 
-import java.util.zip.Inflater;
-
-import cpnv.jav1.lima.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,12 +9,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class DebugActivity extends Activity 
+public class DebugActivityEFY extends Activity 
 				   implements OnClickListener {
 
 	// References on controls of this activity
 	private Button _btn;
 	private TextView _output;
+	private String out;
 	
 
     // Create activity event handler
@@ -25,7 +23,7 @@ public class DebugActivity extends Activity
     public void onCreate(Bundle savedInstanceState) {
 		// Initialize and display view
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.debug);
+        setContentView(R.layout.debug_efy);
         
         // Log messages (to logcat)
         Log.i ("LIMA", "Started debug activity");
@@ -36,13 +34,7 @@ public class DebugActivity extends Activity
 		int arg1 = intent.getIntExtra("arg1",0);
         
         // Setup event handler on action button
-        _btn = (Button)findViewById(R.id.action1); 
-       	_btn.setOnClickListener(this); 
-        _btn = (Button)findViewById(R.id.action2); 
-       	_btn.setOnClickListener(this); 
-        _btn = (Button)findViewById(R.id.action3); 
-       	_btn.setOnClickListener(this); 
-       	_btn = (Button)findViewById(R.id.btnEFY); 
+        _btn = (Button)findViewById(R.id.actionEFY); 
        	_btn.setOnClickListener(this); 
        	
        	// Get reference on the output textview
@@ -55,19 +47,15 @@ public class DebugActivity extends Activity
 		// Let's see which action must be performed
 		switch (btn.getId()) 
 		{
-		case R.id.action1: // Add timestamp to the debug text
-			Book book = Book.findOneById(1);
-			_output.setText(book.dump());
-			break;
-		case R.id.action2: // get data from web service using POST
-			_output.setText(_output.getText()+"\nAction 2");
-			break;
-		case R.id.action3: // Read button text from external file
-			_output.setText(_output.getText()+"\nAction 3");
-			break;
-		case R.id.btnEFY: // Read button text from external file
-			Intent intentEFY = new Intent(this, DebugActivityEFY.class);
-			startActivity(intentEFY);
+		case R.id.actionEFY: // Add timestamp to the debug text
+			LimaDb db = new LimaDb("http://192.168.0.4");
+			db.executeQuery("SELECT * FROM person LIMIT 10");
+			
+			while (db.moveNext()){
+				out += db.getField("personfirstname")+ "\n";
+			}
+			
+			_output.setText(out);
 			break;
 		}
 	}
