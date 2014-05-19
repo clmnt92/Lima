@@ -21,21 +21,35 @@ public final class R {
         public static final int lima=0x7f020001;
     }
     public static final class id {
-        public static final int action1=0x7f060004;
-        public static final int action2=0x7f060005;
-        public static final int action3=0x7f060006;
-        public static final int cmdMainDebug=0x7f06000a;
-        public static final int cmdMainDistribution=0x7f060009;
-        public static final int cmdMainInventory=0x7f060008;
-        public static final int cmdMainValidation=0x7f060007;
-        public static final int goAct1=0x7f060000;
-        public static final int goAct2=0x7f060001;
-        public static final int outputzone=0x7f060003;
-        public static final int scrollViewDebug=0x7f060002;
+        public static final int action1=0x7f060011;
+        public static final int action2=0x7f060012;
+        public static final int action3=0x7f060013;
+        public static final int btnCancel=0x7f06000c;
+        public static final int btnSubmit=0x7f06000b;
+        public static final int button1=0x7f060000;
+        public static final int cmdMainDebug=0x7f060017;
+        public static final int cmdMainDistribution=0x7f060016;
+        public static final int cmdMainInventory=0x7f060015;
+        public static final int cmdMainValidation=0x7f060014;
+        public static final int goAct1=0x7f06000d;
+        public static final int goAct2=0x7f06000e;
+        public static final int outputzone=0x7f060010;
+        public static final int scrollViewDebug=0x7f06000f;
+        public static final int txtAuthor=0x7f060002;
+        public static final int txtEditor=0x7f060009;
+        public static final int txtIsbn=0x7f060008;
+        public static final int txtNumber=0x7f060003;
+        public static final int txtPrice=0x7f060005;
+        public static final int txtPublicationYear=0x7f06000a;
+        public static final int txtStock=0x7f060007;
+        public static final int txtSupplier=0x7f060004;
+        public static final int txtTitle=0x7f060001;
+        public static final int txtTva=0x7f060006;
     }
     public static final class layout {
-        public static final int debug=0x7f030000;
-        public static final int main=0x7f030001;
+        public static final int add_book=0x7f030000;
+        public static final int debug=0x7f030001;
+        public static final int main=0x7f030002;
     }
     public static final class string {
         public static final int app_name=0x7f050005;
