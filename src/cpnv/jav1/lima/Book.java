@@ -3,14 +3,16 @@
  *
  * @package cpnv.jav1.lima
  * @author romain.lanz
- * @version 1.0, 12.05.14
+ * @version 1.0, 19.05.14
  */
 
 package cpnv.jav1.lima;
 
+import java.util.ArrayList;
+
 import android.util.Log;
 
-public class Book
+public class Book extends Article
 {
 
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
@@ -40,6 +42,11 @@ public class Book
      * Date of the publication of the book
      */
     protected Integer _publicationYear;
+    
+    /**
+     * ID of the article
+     */
+    private Integer _articleId;
 
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
   /* SQL fields */
@@ -73,6 +80,12 @@ public class Book
      * The name for the SQL field for the publication year
      */
     public static final String sqlPublicationYear = "publicationyear";
+    
+    /**
+     * The name for the SQL field for the foreign key
+     */
+    public static final String sqlArticleId = "fk_article";
+    
 
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
   /* Constructor */
@@ -90,14 +103,22 @@ public class Book
      * @param editor Editor of the book
      * @param isbn ISBN of the book
      * @param publicationYear Year of the publication of the book
+     * @param articleId ID of the article
      */
-    public Book(Integer id, String author, String editor, String isbn, Integer publicationYear)
+    public Book(Integer id, String author, String editor, String isbn, Integer publicationYear, Integer articleId, String name, String number, String supplier, Float price, Float TVA, Integer stock)
     {
     	setID(id);
     	setAuthor(author);
     	setEditor(editor);
     	setIsbn(isbn);
     	setPublicationYear(publicationYear);
+    	setArticleId(articleId);
+    	setName(name);
+    	setNumber(number);
+    	setSupplier(supplier);
+    	setPrice(price);
+    	setTVA(TVA);
+    	setStock(stock);
     }
 
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
@@ -112,6 +133,12 @@ public class Book
     {
     	String dump = "Object(Book)#" + hashCode() + " {";
     	dump += "\n\t ID = " + _id;
+    	dump += "\n\t Name = " + super.getName();
+    	dump += "\n\t Number = " + super.getNumber();
+    	dump += "\n\t Supplier = " + super.getSupplier();
+    	dump += "\n\t Price = " + super.getPrice();
+    	dump += "\n\t TVA = " + super.getTVA();
+    	dump += "\n\t Stock = " + super.getStock();
     	dump += "\n\t Author = " + _author;
     	dump += "\n\t Editor = " + _editor;
     	dump += "\n\t ISBN = " + _isbn;
@@ -134,6 +161,7 @@ public class Book
     	return new LimaDb("http://192.168.0.4");
     }
     
+    
     /**
      * Save the current object on the database
      */
@@ -142,10 +170,28 @@ public class Book
     	LimaDb dao = Book.getDao();
     	
     	if (null == _id) {
-    		
-    	} else {
-    		
-    	}
+        	String queryArticle = "INSERT INTO " + super.sqlTable + " () ";
+        	String queryBook = "INSERT INTO " + sqlTable + " () ";
+        } else {
+        	String queryArticle = "UPDATE " + super.sqlTable + " ()";
+        	String queryBook = "UPDATE " + sqlTable + " () ";
+        }
+    }
+    
+    /**
+     * Gets all book
+     * 
+     * @return ArrayList of book
+     */
+    public static ArrayList<Book> findAll()
+    {
+    	String query = "SELECT * FROM " + sqlTable + " b, " + Article.sqlTable + " a WHERE a." + Article.sqlId + " = b." + sqlArticleId;
+    	Log.i("LIMA", "New query : " + query);
+    	LimaDb dao = Book.getDao();
+    	
+    	dao.executeQuery(query);
+    	
+    	return Book.instanceWithDao(dao);
     }
     
     /**
@@ -156,13 +202,13 @@ public class Book
      */
     public static Book findOneById(Integer id)
     {
-    	String query = "SELECT * FROM " + sqlTable + " WHERE " + sqlID + " = " + id;
+    	String query = "SELECT * FROM " + sqlTable + " b, " + Article.sqlTable + " a WHERE b." + sqlID + " = " + id + " AND a." + Article.sqlId + " = b." + sqlArticleId;
     	Log.i("LIMA", "New query : " + query);
     	LimaDb dao = Book.getDao();
     	
     	dao.executeQuery(query);
     	
-    	return Book.instanceWithDao(dao);
+    	return Book.instanceOneWithDao(dao);
     }
     
     /**
@@ -173,13 +219,13 @@ public class Book
      */
     public static Book findOneByIsbn(String isbn)
     {
-    	String query = "SELECT * FROM " + sqlTable + " WHERE " + sqlIsbn + " = " + isbn;
+    	String query = "SELECT * FROM " + sqlTable + " b, " + Article.sqlTable + " a WHERE b." + sqlIsbn + " = " + isbn + " AND a." + Article.sqlId + " = b." + sqlArticleId;
     	Log.i("LIMA", "New query : " + query);
     	LimaDb dao = Book.getDao();
     	
     	dao.executeQuery(query);
     	
-    	return Book.instanceWithDao(dao);
+    	return Book.instanceOneWithDao(dao);
     }
     
     /**
@@ -188,7 +234,7 @@ public class Book
      * @param dao Database access object
      * @return A Book
      */
-    private static Book instanceWithDao(LimaDb dao)
+    private static Book instanceOneWithDao(LimaDb dao)
     {
     	try {
     		while(dao.moveNext()) {
@@ -197,7 +243,14 @@ public class Book
         				dao.getField(sqlAuthor),
         				dao.getField(sqlEditor),
         				dao.getField(sqlIsbn),
-        				(null == dao.getField(sqlPublicationYear) ? null : Integer.parseInt(dao.getField(sqlPublicationYear)))
+        				(null == dao.getField(sqlPublicationYear) ? null : Integer.parseInt(dao.getField(sqlPublicationYear))),
+        				(null == dao.getField(sqlArticleId) ? null : Integer.parseInt(dao.getField(sqlArticleId))),
+        				dao.getField(Article.sqlName),
+        				dao.getField(Article.sqlNumber),
+        				dao.getField(Article.sqlSupplier),
+        				(null == dao.getField(sqlPrice) ? null : Float.parseFloat(dao.getField(sqlPrice))),
+        				(null == dao.getField(sqlTVA) ? null : Float.parseFloat(dao.getField(sqlTVA))),
+        				(null == dao.getField(sqlStock) ? null : Integer.parseInt(dao.getField(sqlStock)))
         		);
         	}
     	} catch (Exception e) {
@@ -205,6 +258,40 @@ public class Book
     	}
     	
     	return new Book();
+    }
+    
+    /**
+     * Instance books with a database access object
+     * 
+     * @param dao Database access object
+     * @return Books
+     */
+    private static ArrayList<Book> instanceWithDao(LimaDb dao)
+    {
+    	ArrayList<Book> books = new ArrayList<Book>();
+    	
+    	try {
+    		while(dao.moveNext()) {
+        		 books.add(new Book(
+        				(null == dao.getField(dao.getField(sqlID)) ? null : Integer.parseInt(dao.getField(sqlID))),
+        				dao.getField(sqlAuthor),
+        				dao.getField(sqlEditor),
+        				dao.getField(sqlIsbn),
+        				(null == dao.getField(sqlPublicationYear) ? null : Integer.parseInt(dao.getField(sqlPublicationYear))),
+        				(null == dao.getField(sqlArticleId) ? null : Integer.parseInt(dao.getField(sqlArticleId))),
+        				dao.getField(Article.sqlName),
+        				dao.getField(Article.sqlNumber),
+        				dao.getField(Article.sqlSupplier),
+        				(null == dao.getField(sqlPrice) ? null : Float.parseFloat(dao.getField(sqlPrice))),
+        				(null == dao.getField(sqlTVA) ? null : Float.parseFloat(dao.getField(sqlTVA))),
+        				(null == dao.getField(sqlStock) ? null : Integer.parseInt(dao.getField(sqlStock)))
+        		));
+        	}
+    	} catch (Exception e) {
+    		Log.i("LIMA", "Can't instance Book object. Error is \"" + e.getMessage() + "\"");
+    	}
+    	
+    	return books;
     }
     
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
@@ -279,5 +366,19 @@ public class Book
      * @return The publication year of the book
      */
     public Integer getPublicationYear() { return _publicationYear; }
+    
+    /**
+     * Sets the article ID of the book
+     * 
+     * @param id Article ID of the book
+     */
+    private void setArticleId(Integer id) { _articleId = id; }
+    
+    /**
+     * Gets the article ID of the book
+     * 
+     * @return The article ID of the book
+     */
+    private Integer getArticleId() { return _articleId; }
 
 }

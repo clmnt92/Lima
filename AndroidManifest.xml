@@ -21,10 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="cpnv.jav1.lima.DebugActivity"
+            android:name="cpnv.jav1.lima.DebugActivityMD"
             android:label="@string/debTitle"
             android:screenOrientation="portrait" >
         </activity>
+<<<<<<< HEAD
         
         <activity
             android:name="cpnv.jav1.lima.InventoryActivity"
@@ -32,6 +33,19 @@
             android:screenOrientation="portrait" >
         </activity>
     
+=======
+    	
+    	<activity
+    	    android:name="cpnv.jav1.lima.DistributionSessionsActivity"
+    	    android:label="@string/distribTitle"
+    	    android:screenOrientation="portrait">
+    	</activity>
+    	<activity
+    	    android:name="cpnv.jav1.lima.DistributionSessionsClassActivity"
+    	    android:label="@string/distrisessclasstitle"
+    	    android:screenOrientation="portrait">
+    	</activity>
+>>>>>>> e07d0d1d72fdb3cf47f884d2e8df31248805819a
     </application>
     
 </manifest>
