@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="cpnv.jav1.lima.DebugActivity"
+            android:name="cpnv.jav1.lima.DebugActivityMD"
             android:label="@string/debTitle"
             android:screenOrientation="portrait" >
         </activity>
