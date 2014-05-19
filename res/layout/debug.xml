@@ -9,6 +9,18 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content" >
 	
+	    <Button
+	        android:id="@+id/goAct1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/uitGoAct1" />
+	
+	    <Button
+	        android:id="@+id/goAct2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/uitGoAct2" />
+	
 	</LinearLayout>
     
     <ScrollView
@@ -30,6 +42,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/action1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uitDebugAction1" />
+
+        <Button
+            android:id="@+id/action2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uitDebugAction2" />
+
+        <Button
+            android:id="@+id/action3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uitDebugAction3" />
 
     </LinearLayout>
 
