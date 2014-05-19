@@ -25,7 +25,7 @@ public class DebugActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.debug);
         
-        // Log messages (logcat)
+        // Log messages (to logcat)
         Log.i ("LIMA", "Started debug activity");
         // Retrieve the intent that invoked us
         Intent intent = getIntent();
