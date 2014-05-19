@@ -8,6 +8,8 @@
 
 package cpnv.jav1.lima;
 
+import android.util.Log;
+
 public class Book
 {
 
@@ -155,6 +157,7 @@ public class Book
     public static Book findOneById(Integer id)
     {
     	String query = "SELECT * FROM " + sqlTable + " WHERE " + sqlID + " = " + id;
+    	Log.i("LIMA", "New query : " + query);
     	LimaDb dao = Book.getDao();
     	
     	dao.executeQuery(query);
@@ -171,6 +174,7 @@ public class Book
     public static Book findOneByIsbn(String isbn)
     {
     	String query = "SELECT * FROM " + sqlTable + " WHERE " + sqlIsbn + " = " + isbn;
+    	Log.i("LIMA", "New query : " + query);
     	LimaDb dao = Book.getDao();
     	
     	dao.executeQuery(query);
@@ -186,14 +190,18 @@ public class Book
      */
     private static Book instanceWithDao(LimaDb dao)
     {
-    	while(dao.moveNext()) {
-    		return new Book(
-    				Integer.parseInt(dao.getField(sqlID)),
-    				dao.getField(sqlAuthor),
-    				dao.getField(sqlEditor),
-    				dao.getField(sqlIsbn),
-    				Integer.parseInt(dao.getField(sqlPublicationYear))
-    		);
+    	try {
+    		while(dao.moveNext()) {
+        		return new Book(
+        				(null == dao.getField(dao.getField(sqlID)) ? null : Integer.parseInt(dao.getField(sqlID))),
+        				dao.getField(sqlAuthor),
+        				dao.getField(sqlEditor),
+        				dao.getField(sqlIsbn),
+        				(null == dao.getField(sqlPublicationYear) ? null : Integer.parseInt(dao.getField(sqlPublicationYear)))
+        		);
+        	}
+    	} catch (Exception e) {
+    		Log.i("LIMA", "Can't instance Book object. Error is \"" + e.getMessage() + "\"");
     	}
     	
     	return new Book();
