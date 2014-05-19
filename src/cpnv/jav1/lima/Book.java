@@ -79,6 +79,24 @@ public class Book extends Article
      * Class constructor
      */
     public Book() {}
+    
+    /**
+     * Class constructor to instance a book with all attributes
+     * 
+     * @param id ID of the book
+     * @param author Author of the book
+     * @param editor Editor of the book
+     * @param isbn ISBN of the book
+     * @param publicationYear Year of the publication of the book
+     */
+    public Book(Integer id, String author, String editor, String isbn, Integer publicationYear)
+    {
+    	setID(id);
+    	setAuthor(author);
+    	setEditor(editor);
+    	setIsbn(isbn);
+    	setPublicationYear(publicationYear);
+    }
 
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
   /* Methods */
@@ -94,14 +112,14 @@ public class Book extends Article
     }
 
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
-  /* ORM */
+  /* Database methods */
     
     /**
      * Gets the database access object
      * 
      * @return The database access object
      */
-    private LimaDb getDao()
+    private static LimaDb getDao()
     {
     	return new LimaDb("http://192.168.0.4");
     }
@@ -111,10 +129,63 @@ public class Book extends Article
      */
     public void save()
     {
-    	LimaDb dao = getDao();
+    	LimaDb dao = Book.getDao();
     	
     	if (null == _id) {
     		
+    	} else {
+    		
+    	}
+    }
+    
+    /**
+     * Gets a book with an ID
+     * 
+     * @param id ID of the book
+     * @return A book
+     */
+    public static Book findOneById(Integer id)
+    {
+    	String query = "SELECT * FROM " + sqlTable + " WHERE " + sqlID + " = " + id;
+    	LimaDb dao = Book.getDao();
+    	
+    	dao.executeQuery(query);
+    	
+    	return Book.instanceWithDao(dao);
+    }
+    
+    /**
+     * Gets a book with an ISBN
+     * 
+     * @param isbn ISBN of the book
+     * @return A book
+     */
+    public static Book findOneByIsbn(String isbn)
+    {
+    	String query = "SELECT * FROM " + sqlTable + " WHERE " + sqlIsbn + " = " + isbn;
+    	LimaDb dao = Book.getDao();
+    	
+    	dao.executeQuery(query);
+    	
+    	return Book.instanceWithDao(dao);
+    }
+    
+    /**
+     * Instance a book with a database access object
+     * 
+     * @param dao Database access object
+     * @return A Book
+     */
+    private static Book instanceWithDao(LimaDb dao)
+    {
+    	while(dao.moveNext()) {
+    		return new Book(
+    				Integer.parseInt(dao.getField(sqlID)),
+    				dao.getField(sqlAuthor),
+    				dao.getField(sqlEditor),
+    				dao.getField(sqlIsbn),
+    				Integer.parseInt(dao.getField(sqlPublicationYear))
+    		);
     	}
     }
     
