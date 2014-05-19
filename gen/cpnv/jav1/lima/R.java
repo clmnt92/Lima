@@ -47,9 +47,16 @@ public final class R {
         public static final int txtTva=0x7f060006;
     }
     public static final class layout {
+<<<<<<< HEAD
+        public static final int debug=0x7f030000;
+        public static final int inventory=0x7f030001;
+        public static final int log=0x7f030002;
+        public static final int main=0x7f030003;
+=======
         public static final int add_book=0x7f030000;
         public static final int debug=0x7f030001;
         public static final int main=0x7f030002;
+>>>>>>> e07d0d1d72fdb3cf47f884d2e8df31248805819a
     }
     public static final class string {
         public static final int app_name=0x7f050005;
