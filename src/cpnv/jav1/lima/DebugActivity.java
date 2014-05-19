@@ -25,7 +25,7 @@ public class DebugActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.debug);
         
-        // Log messages (logcat)
+        // Log messages (to logcat)
         Log.i ("LIMA", "Started debug activity");
         // Retrieve the intent that invoked us
         Intent intent = getIntent();
@@ -52,7 +52,8 @@ public class DebugActivity extends Activity
 		switch (btn.getId()) 
 		{
 		case R.id.action1: // Add timestamp to the debug text
-			_output.setText(_output.getText()+"\nAction 1");
+			Book book = Book.findOneById(1);
+			_output.setText(book.dump());
 			break;
 		case R.id.action2: // get data from web service using POST
 			_output.setText(_output.getText()+"\nAction 2");
