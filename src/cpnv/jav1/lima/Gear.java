@@ -5,8 +5,6 @@
 
 package cpnv.jav1.lima;
 
-import linkedlist.EmptyListException;
-
 public class Gear extends Article{
 
 	// Initialization variable size
@@ -18,9 +16,9 @@ public class Gear extends Article{
 		_size = "Undefined";
 	}
 	public Gear(String name, int number, String resp, String supplier, double price, double VAT, String size) {
-		super (name, number, resp, supplier, price, VAT);
-		if ((size.length() > 3) || (size.length() < 1)) // Invalid size code
-			_size = "Undefined"; // Default value "Unique"
+		super(name, number, resp, supplier, price, VAT);
+		if ((size.length() > 3) || (size.length() < 1))
+			_size = "Undefined";
 		else
 			_size = size;
 	}
@@ -29,8 +27,8 @@ public class Gear extends Article{
 		return this._size;
 	}
 	public void setSize(String size) {
-		if ((size.length() > 3) || (size.length() < 1)) // Invalid size code
-			_size = "Undefined"; // Default value "Unique"
+		if ((size.length() > 3) || (size.length() < 1))
+			_size = "Undefined";
 		else
 			_size = size;
 	}
