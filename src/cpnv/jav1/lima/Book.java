@@ -8,7 +8,7 @@
 
 package cpnv.jav1.lima;
 
-public class Book extends Article
+public class Book
 {
 
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
@@ -187,6 +187,8 @@ public class Book extends Article
     				Integer.parseInt(dao.getField(sqlPublicationYear))
     		);
     	}
+    	
+    	return new Book();
     }
     
 /* +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ */
