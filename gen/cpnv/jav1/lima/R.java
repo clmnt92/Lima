@@ -21,16 +21,21 @@ public final class R {
         public static final int lima=0x7f020001;
     }
     public static final class id {
+        public static final int DistriSessionSpinner=0x7f060017;
+        public static final int DistriSessionTitle=0x7f060016;
+        public static final int DistriToClass=0x7f060018;
         public static final int action1=0x7f060011;
         public static final int action2=0x7f060012;
         public static final int action3=0x7f060013;
+        public static final int actionEFY=0x7f060015;
         public static final int btnCancel=0x7f06000c;
+        public static final int btnEFY=0x7f060014;
         public static final int btnSubmit=0x7f06000b;
         public static final int button1=0x7f060000;
-        public static final int cmdMainDebug=0x7f060017;
-        public static final int cmdMainDistribution=0x7f060016;
-        public static final int cmdMainInventory=0x7f060015;
-        public static final int cmdMainValidation=0x7f060014;
+        public static final int cmdMainDebug=0x7f06001c;
+        public static final int cmdMainDistribution=0x7f06001b;
+        public static final int cmdMainInventory=0x7f06001a;
+        public static final int cmdMainValidation=0x7f060019;
         public static final int goAct1=0x7f06000d;
         public static final int goAct2=0x7f06000e;
         public static final int outputzone=0x7f060010;
@@ -49,20 +54,26 @@ public final class R {
     public static final class layout {
         public static final int add_book=0x7f030000;
         public static final int debug=0x7f030001;
-        public static final int main=0x7f030002;
+        public static final int debug_efy=0x7f030002;
+        public static final int distributionsessions=0x7f030003;
+        public static final int distributionsessionsclass=0x7f030004;
+        public static final int main=0x7f030005;
     }
     public static final class string {
-        public static final int app_name=0x7f050005;
+        public static final int app_name=0x7f050008;
         public static final int debTitle=0x7f050000;
-        public static final int empty=0x7f050009;
+        public static final int distribTitle=0x7f050006;
+        public static final int distributionsessionstitle=0x7f050005;
+        public static final int distrisessclasstitle=0x7f050007;
+        public static final int empty=0x7f05000c;
         public static final int uitDebugAction1=0x7f050002;
         public static final int uitDebugAction2=0x7f050003;
         public static final int uitDebugAction3=0x7f050004;
-        public static final int uitGoAct1=0x7f05000a;
-        public static final int uitGoAct2=0x7f05000b;
+        public static final int uitGoAct1=0x7f05000d;
+        public static final int uitGoAct2=0x7f05000e;
         public static final int uitMainDebug=0x7f050001;
-        public static final int uitMainDistribution=0x7f050008;
-        public static final int uitMainInventory=0x7f050007;
-        public static final int uitMainValidation=0x7f050006;
+        public static final int uitMainDistribution=0x7f05000b;
+        public static final int uitMainInventory=0x7f05000a;
+        public static final int uitMainValidation=0x7f050009;
     }
 }

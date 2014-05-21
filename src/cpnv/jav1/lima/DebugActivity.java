@@ -1,10 +1,7 @@
 package cpnv.jav1.lima;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
 import java.util.zip.Inflater;
->>>>>>> fe11ee8296219a2d6d2ffaeb07fb18e16ba91e14
 
 import cpnv.jav1.lima.R;
 import android.app.Activity;
@@ -46,8 +43,6 @@ public class DebugActivity extends Activity
        	_btn.setOnClickListener(this); 
         _btn = (Button)findViewById(R.id.action3); 
        	_btn.setOnClickListener(this); 
-       	_btn = (Button)findViewById(R.id.btnEFY); 
-       	_btn.setOnClickListener(this); 
        	
        	// Get reference on the output textview
 		_output = (TextView)findViewById(R.id.outputzone);
@@ -74,10 +69,6 @@ public class DebugActivity extends Activity
 			break;
 		case R.id.action3: // Read button text from external file
 			_output.setText(_output.getText()+"\nAction 3");
-			break;
-		case R.id.btnEFY: // Read button text from external file
-			Intent intentEFY = new Intent(this, DebugActivityEFY.class);
-			startActivity(intentEFY);
 			break;
 		}
 	}
