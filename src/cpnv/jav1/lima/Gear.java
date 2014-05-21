@@ -15,8 +15,8 @@ public class Gear extends Article{
 		super();
 		_size = "Undefined";
 	}
-	public Gear(String name, int number, String resp, String supplier, double price, double VAT, String size) {
-		super(name, number, resp, supplier, price, VAT);
+	public Gear(String name, String number, String supplier, float price, float VAT, int stock, int obs, String size) {
+		super(name, number, supplier, price, VAT, stock, obs);
 		if ((size.length() > 3) || (size.length() < 1))
 			_size = "Undefined";
 		else

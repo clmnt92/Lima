@@ -44,7 +44,7 @@ public class Menu extends Activity
 		switch (btn.getId()) 
 		{
 		case R.id.cmdMainDebug: // Debug button -> switch to debug activity
-			Intent myIntent = new Intent(Menu.this, DebugActivityMD.class);
+			Intent myIntent = new Intent(Menu.this, DebugActivity.class);
 			// Let's pass some parameters to the debug activity
 			myIntent.putExtra("arg0", "arg0 is a string value, unlike arg1, which is an integer");
 			myIntent.putExtra("arg1", 5);
